@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaKinesica" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c06d04d-81dd-4127-964d-80a1d2acd2c8">
+	<property name="ireport.zoom" value="1.4641000000000093"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IdDerivacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select f.*, o.*,d.*,m.*,a.*,p.*,
+TIMESTAMPDIFF(YEAR,fecha_nacimiento,CURDATE()) as Edad
+from fichas f
+inner join ocupaciones o on o.id_ocupacion = f.id_ocupacion
+inner join derivaciones d on d.id_ficha = f.id_ficha
+inner join medicos m on m.id_medico = d.id_medico
+inner join alumnos a on a.id_alumno = d.id_alumno
+inner join patologias p on p.id_patologia = d.id_patologia
+where d.id_derivacion = $P{IdDerivacion}]]>
+	</queryString>
+	<field name="id_ficha" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_documento" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_ingreso" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_nacimiento" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="domicilio_paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_paciente" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_paciente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_ocupacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion_ocupacion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_derivacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="abona" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="diagnostico_kinesico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="numero_sesiones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="motivo_noabona" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_patologia" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_medico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_alumno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="antecedente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monto_abonado" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_medico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="descripcion_patologia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Edad" class="java.lang.Long"/>
+	<title>
+		<band height="279" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="100" width="555" height="70" uuid="c0f115e6-760b-4854-8426-fa98c1fb8185"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="190" width="555" height="89" uuid="e1fdc34c-ab4c-40c0-8518-fe854e2d4ae1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="170" width="555" height="20" uuid="53e29f4f-0da3-4bd4-bd87-2256135946e4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="74" width="555" height="25" uuid="277ea5a6-d2d6-437c-9256-88436bc6e7ad"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Orden de Pago]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="5" width="160" height="65" uuid="5a21a07f-81da-4429-996a-310adde5cd5e"/>
+				<box leftPadding="2">
+					<leftPen lineWidth="0.5"/>
+				</box>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[+ 595 71 203 627, int. 114
++ 595 71 203 627, int. 208(Fax)
+www.uci.edu.py
+salud.uci.itapua@uc.edu.py
+Antequera y Arq. Tomás Romero Pereira
+Encarnación - Paraguay
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="100" height="70" uuid="af07a400-7b9e-42f4-8fab-2a0d7ac0176f"/>
+				<imageExpression><![CDATA["KinesioLogo.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="245" y="0" width="70" height="70" uuid="f428966c-2c57-499a-8a04-21b1ef3805f9"/>
+				<imageExpression><![CDATA["logo_kinesio.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Detail" x="104" y="125" width="171" height="15" backcolor="#000000" uuid="b68d0e31-4717-4f67-b278-20eec93103b5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_paciente} + " " + $F{apellido_paciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="321" y="125" width="73" height="15" backcolor="#000000" uuid="4b703f4e-368b-4824-bdcb-8f329bdc32c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_documento}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="2" y="155" width="69" height="15" forecolor="#000000" backcolor="#000000" uuid="19c4ecc6-8f81-43d4-9aef-56281480fc72"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Nº de Sesion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="57" y="140" width="264" height="15" backcolor="#000000" uuid="98dbc782-a0ef-4a64-961f-9b17bbe7d099"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{domicilio_paciente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="297" y="125" width="24" height="15" forecolor="#000000" backcolor="#000000" uuid="2eb8a3ab-b00c-4b1a-b526-b579d08b4e82"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[C.I.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="104" y="110" width="37" height="15" uuid="7fbb3ea9-2c00-463d-89c7-8f10eaaece51"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="2" y="125" width="102" height="15" forecolor="#000000" uuid="1c8d3d44-95fe-42d9-8cdf-97df95aaacb2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Nombre y Apellido:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="71" y="170" width="140" height="20" uuid="4b295f0a-eac4-417c-ac52-da74d1d963e5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_alumno} + " " + $F{apellido_alumno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="2" y="170" width="69" height="20" forecolor="#000000" uuid="11646d90-bcf7-4170-a5cb-8b50be787b42"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Atendido por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="110" width="102" height="15" forecolor="#000000" uuid="d8a3fa64-5df2-4fa6-8692-9df4ce466955"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Referencia Paciente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Detail" x="450" y="125" width="105" height="15" backcolor="#000000" uuid="09e253f6-4dc3-4f84-8b1f-b571c347ed4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telefono_paciente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="401" y="125" width="49" height="15" forecolor="#000000" backcolor="#000000" uuid="d6520aba-5c07-4fda-b521-69f48c3c9339"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="2" y="140" width="55" height="15" forecolor="#000000" uuid="efdb1e78-6582-45af-8588-d4268d9a10aa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Domicilio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="370" y="234" width="86" height="20" forecolor="#000000" uuid="d8a7eef4-d8d6-44ff-abe0-ffb629cd72c9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12"/>
+				</textElement>
+				<text><![CDATA[Total a Pagar:]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement x="456" y="234" width="99" height="20" uuid="0ec31021-3c7b-488d-8a44-5abda847b372"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{monto_abonado}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="57" y="234" width="154" height="20" forecolor="#000000" uuid="7ff75c37-01bc-48ea-a81e-5f79e2271a45"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Firma y Sello]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="155" width="66" height="15" uuid="7e6f5af9-7dbd-4a5f-9a53-9035718880c4"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Inicial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="456" y="100" width="39" height="15" forecolor="#000000" backcolor="#000000" uuid="05ecfb43-adce-494d-b85b-598a21b32804"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="495" y="100" width="60" height="15" uuid="24c5bfc1-d2a7-4c60-8347-3f4a0e8791a9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="222" y="110" width="75" height="15" forecolor="#000000" backcolor="#000000" uuid="293d7f5f-be11-4679-b097-ac94797533cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Nº Derivación:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="301" y="110" width="52" height="15" uuid="7f9f4976-52e9-4824-a61f-294ebe4efd14"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_derivacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="381" y="155" width="114" height="15" forecolor="#000000" backcolor="#000000" uuid="c2af9615-e7f8-4ee4-9d97-b65a97dee187"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<text><![CDATA[Cantidad de Sesiones:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="495" y="155" width="60" height="15" uuid="a99a4509-8985-41d4-a9ec-c9853d465fcb"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{numero_sesiones}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

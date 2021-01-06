@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FichaKinesicaEvoluciones" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="68ed0a00-cca7-4144-b040-fd7c4de74bc4">
+	<property name="ireport.zoom" value="1.6105100000000019"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idDerivacion" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from evoluciones e
+inner join alumnos a on a.id_alumno= e.id_alumno
+and e.id_derivacion = $P{idDerivacion}]]>
+	</queryString>
+	<field name="id_evolucion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_evaluacion" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monto_evaluacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="turno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="num_sesion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kinesioterapia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fisioterapia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="kinefilaxia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_derivacion" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_alumno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="correo_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="id_usuario" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Sumar" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{monto_evaluacion}]]></variableExpression>
+	</variable>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="44" y="0" width="70" height="15" uuid="e08b8e99-662f-4b0b-98ac-935cef2bcc01"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{fecha_evaluacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="149" y="0" width="39" height="15" uuid="549d794a-a3d6-4333-a86d-4e421d802c64"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{turno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="36" height="15" uuid="4a9b7174-fb74-451f-bc9f-f12cbd7aa4e0"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{num_sesion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="10" y="15" width="180" height="21" uuid="807fe670-36b2-4f69-a130-0244051e54f7"/>
+				<box>
+					<bottomPen lineWidth="0.75"/>
+				</box>
+				<textFieldExpression><![CDATA["                                     " +
+(null == $F{kinesioterapia} ? "": $F{kinesioterapia})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="318" y="0" width="132" height="15" uuid="dc9b92c9-f7d5-42e6-862b-48ab1f7e71a7"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{nombre_alumno}+" "+$F{apellido_alumno}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement x="487" y="0" width="63" height="15" uuid="332ff259-1b56-49f7-b3a4-bef650e6b010"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{monto_evaluacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="190" y="15" width="180" height="21" uuid="2f586cfb-0fa0-436e-9f07-5f6bdd883048"/>
+				<box>
+					<bottomPen lineWidth="0.75"/>
+				</box>
+				<textFieldExpression><![CDATA["                      " +
+(null == $F{fisioterapia} ? "": $F{fisioterapia})]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="370" y="15" width="180" height="21" uuid="96db2e4c-398d-4c8d-85c0-21a4d777501b"/>
+				<box>
+					<bottomPen lineWidth="0.75"/>
+				</box>
+				<textFieldExpression><![CDATA["                    " +
+(null == $F{kinesioterapia} ? "":$F{kinesioterapia})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="15" width="82" height="20" uuid="c70d53b3-e6b2-453b-af2d-c5d1678bf47a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kinesioterapia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="16" width="65" height="20" uuid="6a0a95f0-0f1e-4336-8b26-28a2f53ef31d"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fisioterapia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="370" y="16" width="100" height="20" uuid="c0812112-6a55-4dcb-a488-17ce6990e1ba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kinefilaxia:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="36" height="15" uuid="718ffdc1-59dc-4bad-b874-78a6bc10dcbf"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="42" height="15" uuid="03663efb-9329-49a7-b9fc-65f8a89933fa"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alumno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="188" y="0" width="52" height="15" uuid="0fa53993-081c-49c3-8e33-c68c103eef7f"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº Sesion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="114" y="0" width="35" height="15" uuid="7abfc9fe-6224-45db-9d3c-da68619b08c9"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Turno:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="34" height="15" uuid="08b7c74d-8288-4074-86ed-ab71ff9bf7df"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<summary>
+		<band height="16">
+			<textField pattern="#,##0">
+				<reportElement x="450" y="0" width="100" height="16" uuid="4c0e431d-d860-4ffb-a75d-7ca3506b690f"/>
+				<box rightPadding="2"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Sumar}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
